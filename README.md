@@ -2,27 +2,45 @@
   <img src="./img.png" alt="Project Banner" width="100%">
 </p>
 
-# [Project Name] 🎯
+# [MEDIBOT] 🎯
 
 ## Basic Details
 
-### Team Name: [Name]
+### Team Name: [SHEHACKS]
 
 ### Team Members
-- Member 1: [Name] - [College]
-- Member 2: [Name] - [College]
+- Member 1: [ANN GEORGE] - [MACE]
+- Member 2: [APARNA SAJEEV] - [MACE]
 
 ### Hosted Project Link
-[mention your project hosted link here]
+[https://github.com/anngeo123/Medical-chatbot/commit/9f5c6068c2c4eaf8ee3e7f35cf6593bf0ced43ae]
 
 ### Project Description
-[2-3 lines about what your project does]
+[MediBot is an interactive web application that leverages AI and location services to help users:
+
+Enter their symptoms, age, sex, and location.
+
+Receive possible medical conditions and recommended specialists via GPT-4 AI, presented in a concise, professional, and informational manner.
+
+Find nearby doctors or hospitals in their city using Google Maps API, making healthcare more accessible.
+
+The app is built using Streamlit, providing a clean, responsive, and user-friendly interface, accessible from any web browser.]
 
 ### The Problem statement
-[What problem are you solving?]
+[Millions of people experience mild to moderate symptoms daily, but often struggle to determine the possible causes or which specialist to consult. Accessing nearby doctors or hospitals can also be time-consuming, especially in unfamiliar areas. Existing solutions are either limited to textual databases or rely on complex manual search, leaving users uncertain and anxious about their health.
+
+There is a clear need for a quick, interactive, and reliable tool that guides users in understanding their symptoms and locating nearby medical care without replacing professional consultation.]
 
 ### The Solution
-[How are you solving it?]
+[MediBot solves the problem by combining AI-powered symptom analysis with geolocation-based doctor search:
+
+Symptom Analysis: GPT-4 processes user inputs to generate informational medical advice with recommended specialists.
+
+Doctor Finder: Google Maps API identifies nearby hospitals and doctors for prompt access to healthcare.
+
+User-Friendly Interface: Streamlit ensures users can interact intuitively, without technical knowledge.
+
+This solution provides a fast, reliable, and safe first step for users to understand their symptoms and find medical help — all in one place.]
 
 ---
 
@@ -31,10 +49,10 @@
 ### Technologies/Components Used
 
 **For Software:**
-- Languages used: [e.g., JavaScript, Python, Java]
-- Frameworks used: [e.g., React, Django, Spring Boot]
-- Libraries used: [e.g., axios, pandas, JUnit]
-- Tools used: [e.g., VS Code, Git, Docker]
+- Languages used: [ Python]
+- Frameworks used: [streamlit]
+- Libraries used:openai,requests
+- Tools used:[VS Code, Git, Google Cloud Console (for API keys) ]
 
 **For Hardware:**
 - Main components: [List main components]
@@ -46,10 +64,10 @@
 ## Features
 
 List the key features of your project:
-- Feature 1: [Description]
-- Feature 2: [Description]
-- Feature 3: [Description]
-- Feature 4: [Description]
+- Feature 1: AI-Powered Symptom Analysis – Users enter their symptoms, age, sex, and location, and GPT-4 provides a list of possible conditions and recommended specialists in a concise, professional manner.
+- Feature 2: Nearby Doctor & Hospital Finder – The app uses Google Maps API to locate nearby doctors or hospitals based on the user’s location.
+- Feature 3: User-Friendly Interface – Built with Streamlit, the web app is interactive, responsive, and easy to use, requiring no technical knowledge.
+- Feature 4: Informational & Safe – All advice is purely informational with a clear disclaimer, guiding users without replacing professional medical consultation.
 
 ---
 
@@ -59,13 +77,20 @@ List the key features of your project:
 
 #### Installation
 ```bash
-[Installation commands - e.g., npm install, pip install -r requirements.txt]
-```
+# Clone the repository
+git clone https://github.com/yourusername/medibot.git
+cd medibot
+
+# Install required Python libraries
+pip install -r requirements.txt
+
+
 
 #### Run
-```bash
-[Run commands - e.g., npm start, python app.py]
-```
+```bash<img width="461" height="1181" alt="medibot" src="https://github.com/user-attachments/assets/6b7453c0-57eb-4c56-838d-938cf20888fe" />
+
+# Run the Streamlit app
+streamlit run medibot_web_gpt_google.py
 
 ### For Hardware:
 
@@ -100,9 +125,14 @@ List the key features of your project:
 *Explain your system architecture - components, data flow, tech stack interaction*
 
 **Application Workflow:**
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/3f689317-8d13-4579-8538-146f78fec63b" />
+
+<img width="461" height="1181" alt="medibot" src="https://github.com/user-attachments/assets/d39bd6d2-5891-41b2-b5c3-8c226420ff94" />
+
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/b8564088-cb6b-4707-a513-83de2fe93970" />
 
 ![Workflow](docs/workflow.png)
-*Add caption explaining your workflow*
+This diagram illustrates the MediBot application workflow. The user enters their symptoms, age, sex, and location through the Streamlit interface. The input is sent to GPT-4, which generates possible medical conditions and recommends appropriate specialists. Simultaneously, the location is sent to the Google Maps API to find nearby doctors and hospitals. Finally, all results are displayed back to the user along with an informational disclaimer, completing the end-to-end workflow.
 
 ---
 
@@ -136,38 +166,51 @@ List the key features of your project:
 ### For Web Projects with Backend:
 
 #### API Documentation
-
-**Base URL:** `https://api.yourproject.com`
+OPENAI GPT API:
+**Base URL:** `https://api.openai.com`
+Google Maps Places API: https://maps.googleapis.com/maps/api/place/textsearch/json
 
 ##### Endpoints
 
 **GET /api/endpoint**
-- **Description:** [What it does]
+- **Description:** Generates possible medical conditions and recommends specialists based on user symptoms.
 - **Parameters:**
-  - `param1` (string): [Description]
-  - `param2` (integer): [Description]
+  - `query` (string): Search query, e.g., "doctors in Kochi"
+  - `key` (string): google maps api key
 - **Response:**
-```json
 {
-  "status": "success",
-  "data": {}
-}
-```
+  "results": [
+    {
+      "name": "City Hospital",
+      "formatted_address": "123 Main St, Kochi",
+      "geometry": { "location": {"lat": 10.0, "lng": 76.0} }
+    }
+  ]}
 
 **POST /api/endpoint**
-- **Description:** [What it does]
+- **Description:** Generates possible medical conditions and recommends specialists based on user symptoms.
 - **Request Body:**
-```json
 {
-  "field1": "value1",
-  "field2": "value2"
+  "model": "gpt-4.1-mini",
+  "messages": [
+    {
+      "role": "user",
+      "content": "I have fever and headache, age 25, male, in Kochi"
+    }
+  ],
+  "temperature": 0.5
 }
 ```
 - **Response:**
 ```json
 {
-  "status": "success",
-  "message": "Operation completed"
+  "choices": [
+    {
+      "message": {
+        "content": "Possible Conditions: 1. Viral Fever, 2. Migraine. Recommended Specialists: General Physician, Neurologist."
+      }
+    }
+  ]
 }
 ```
 
@@ -179,8 +222,11 @@ List the key features of your project:
 
 #### App Flow Diagram
 
-![App Flow](docs/app-flow.png)
+![App Flow](<img width="461" height="1181" alt="medibot" src="https://github.com/user-attachments/assets/ca254c8f-ed9f-44ab-9dfc-2f31e1755e0a" />
+)
 *Explain the user flow through your application*
+This diagram shows the end-to-end workflow of MediBot. The user enters symptoms, age, sex, and location through the Streamlit interface. The input is sent to the GPT-4 API, which generates possible medical conditions and recommends specialists. Simultaneously, the location is sent to the Google Maps API to retrieve nearby doctors and hospitals. Finally, all results are displayed back to the user in a clear, user-friendly interface along with an informational disclaimer.
+
 
 #### Installation Guide
 
@@ -268,35 +314,37 @@ xcodebuild -workspace App.xcworkspace -scheme App -configuration Debug
 
 **Basic Usage:**
 ```bash
-python script.py [options] [arguments]
+python medibot.py [options]
 ```
 
 **Available Commands:**
-- `command1 [args]` - Description of what command1 does
-- `command2 [args]` - Description of what command2 does
-- `command3 [args]` - Description of what command3 does
+--city CITY – Specify city for doctor search
 
+--symptoms "text" – Provide symptoms directly (non-interactive mode)
+
+--age AGE – Specify patient age
+
+--sex SEX – Specify patient sex (male/female/other)
+
+--format json – Return output in JSON format
+
+--nearby – Fetch nearby doctors
+
+--no-ai – Skip AI diagnosis (only show nearby doctors)
 **Options:**
-- `-h, --help` - Show help message and exit
-- `-v, --verbose` - Enable verbose output
-- `-o, --output FILE` - Specify output file path
-- `-c, --config FILE` - Specify configuration file
-- `--version` - Show version information
+-h, --help – Show help message and exit
 
+-v, --verbose – Enable detailed processing logs
+
+-o, --output FILE – Save results to a file
+
+--version – Show MediBot version
 **Examples:**
 
 ```bash
-# Example 1: Basic usage
-python script.py input.txt
+python medibot.py
 
-# Example 2: With verbose output
-python script.py -v input.txt
 
-# Example 3: Specify output file
-python script.py -o output.txt input.txt
-
-# Example 4: Using configuration
-python script.py -c config.json --verbose input.txt
 ```
 
 #### Demo Output
@@ -304,26 +352,45 @@ python script.py -c config.json --verbose input.txt
 **Example 1: Basic Processing**
 
 **Input:**
-```
-This is a sample input file
-with multiple lines of text
-for demonstration purposes
-```
+Welcome to MediBot!
+Enter your city: Kochi
+Enter your age: 20
+Enter your sex: Female
+Enter your symptoms: fever and headache
 
+Analyzing symptoms...
+Possible Conditions:
+- Viral Fever
+- Flu
+
+Recommended Specialist:
+- General Physician
+
+Searching nearby doctors in Kochi...
+
+Nearby Doctors:
+1. Dr. -- Clinic
+2. -- Hospital
+
+Disclaimer: This is not a medical diagnosis.
 **Command:**
 ```bash
-python script.py sample.txt
+python medibot.py --city Kochi --age 20 --sex female --symptoms "fever and headache"
 ```
 
 **Output:**
-```
-Processing: sample.txt
-Lines processed: 3
-Characters counted: 86
-Status: Success
-Output saved to: output.txt
-```
 
+Processing request...
+Possible Conditions:
+- Viral Fever
+- Flu
+
+Recommended Specialist:
+- General Physician
+
+Nearby Doctors in Kochi:
+- ABC Hospital
+- Sunrise Medical Center
 **Example 2: Advanced Usage**
 
 **Input:**
@@ -336,28 +403,23 @@ Output saved to: output.txt
 
 **Command:**
 ```bash
-python script.py -v --format json data.json
+python medibot.py -v --city Kochi --symptoms "stomach pain"
 ```
 
 **Output:**
 ```
-[VERBOSE] Loading configuration...
-[VERBOSE] Parsing JSON input...
-[VERBOSE] Processing data...
-{
-  "status": "success",
-  "processed": true,
-  "result": {
-    "name": "test",
-    "value": 123,
-    "timestamp": "2024-02-07T10:30:00"
-  }
-}
-[VERBOSE] Operation completed in 0.23s
-```
+[VERBOSE] Loading API keys...
+[VERBOSE] Sending request to GPT API...
+[VERBOSE] Fetching nearby doctors via Maps API...
+[VERBOSE] Processing results...
 
----
+Possible Conditions:
+- Gastritis
+- Food Poisoning
 
+Specialist:
+- Gastroenterologist
+--
 ## Project Demo
 
 ### Video
@@ -374,19 +436,24 @@ python script.py -v --format json data.json
 
 If you used AI tools during development, document them here for transparency:
 
-**Tool Used:** [e.g., GitHub Copilot, v0.dev, Cursor, ChatGPT, Claude]
+**Tool Used:**  GitHub Copilot,ChatGPT, Google ai studio
 
 **Purpose:** [What you used it for]
-- Example: "Generated boilerplate React components"
-- Example: "Debugging assistance for async functions"
-- Example: "Code review and optimization suggestions"
+-Generated initial boilerplate code for Streamlit frontend
+-Assisted in GPT API integration and configuration
+-Debugging Python errors and virtual environment issues
+-Suggesting improvements for API structure and CLI arguments
+-Helping design system architecture and workflow diagram
+-Formatting documentation and README sections
 
 **Key Prompts Used:**
-- "Create a REST API endpoint for user authentication"
-- "Debug this async function that's causing race conditions"
-- "Optimize this database query for better performance"
+"Create a medical chatbot using Python and GPT API"
 
-**Percentage of AI-generated code:** [Approximately X%]
+"Integrate Google Maps API to fetch nearby doctors"
+
+"Fix ModuleNotFoundError in virtual environment"
+
+**Percentage of AI-generated code:** [Approximately 60%]
 
 **Human Contributions:**
 - Architecture design and planning
@@ -400,9 +467,10 @@ If you used AI tools during development, document them here for transparency:
 
 ## Team Contributions
 
-- [Name 1]: [Specific contributions - e.g., Frontend development, API integration, etc.]
-- [Name 2]: [Specific contributions - e.g., Backend development, Database design, etc.]
-- [Name 3]: [Specific contributions - e.g., UI/UX design, Testing, Documentation, etc.]
+- [ann]: .Frontend development using Streamlit]
+- [aparna]: Testing and debugging
+
+Documentation and README preparation
 
 ---
 
